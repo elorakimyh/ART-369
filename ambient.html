@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #355070, #6d597a, #b56576, #e56b6f, #eaac8b);
+            background-size: 400% 400%;
+            animation: gradientAnimation 30s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .shape {
+            position: absolute; /* Allow positioning anywhere on the screen */
+            top: 0; /* Start at the top */
+            animation: spin 3s linear infinite; /* Add spinning animation */
+            
+        }
+
+        .square {
+            width: 180px;
+            height: 180px;
+            background: orange;
+            background: linear-gradient(45deg, #d8e2dc, #ffe5d9, #ffcad4, #f4acb7, #9d8189);
+        }
+
+        .circle {
+            width: 185px;
+            height: 185px;
+            border-radius: 50%;
+            background: orange;
+            background: linear-gradient(45deg, #e5989b,#ff9a9e, #fecfef);
+
+        }
+
+        .triangle_up {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 110px 180px 110px;
+            border-color: transparent transparent orange transparent;
+            
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="shape circle" style="left: 200px; top: 305px"></div>
+    <div class="shape triangle_up" style="left: 610px; top: 305px"></div>
+    <div class="shape square" style="left: 1050px; top: 305px"></div>
+
+
+</body>
+</html>
