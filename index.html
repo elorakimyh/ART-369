@@ -4,20 +4,105 @@
     <!-- command backslash is to make a comment -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art 369: Software for People</title>
+    <title>elora kim</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #348756, #2e7775, #1e6c8e);
+            background-size: 400% 400%;
+            animation: gradientAnimation 8s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body{
+            padding-left: 22vw;
+            padding-top: 30vh;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #ffadad, #ffd6a5, #fdffb6, #caffbf, #9bf6ff, #a0c4ff, #bdb2ff, #ffc6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        .pop-out {
+            display: inline-block;
+            transition: color 0.3s ease;
+            transform-origin: center;
+            perspective: 500px;
+        }
+
+        .pop-out:hover {
+            color: #A18594;
+            animation: popOutAndJiggle 0.5s ease-in-out infinite;
+        }
+
+        @keyframes popOutAndJiggle {
+            0%, 100% {
+                transform: scale(12) translateZ(20px) translateX(0) rotate(0deg);
+            }
+            15% {
+                transform: scale(12) translateZ(20px) translateX(-2px) rotate(-2deg);
+            }
+            30% {
+                transform: scale(12) translateZ(20px) translateX(2px) rotate(2deg);
+            }
+            45% {
+                transform: scale(12) translateZ(20px) translateX(-1px) rotate(-1deg);
+            }
+            60% {
+                transform: scale(12) translateZ(20px) translateX(1px) rotate(1deg);
+            }
+            75% {
+                transform: scale(12) translateZ(20px) translateX(-1px) rotate(-0.5deg);
+            }
+        }
+
+
+
+    </style>
+    
+
 </head>
-<body>
-    <h1>Art 369: Software for People</h1>
-    <p>
-        This is my class website for Art 369: Software for People. Enjoy!
+
+<body style="font-family: monospace; color: white;">
+    <p style="font-size: xx-large;">
+        Hi 👋🏻 I'm <span class="pop-out"><em><b>Elora</b></em></span>❕ <br> Welcome to my website for <s><s class="gradient-text">ART 369: Software for People</s></s>.
     </p>
 
-    <ul>
-        <li><a href="project1/project-1.html">Project 1</a></li>
-        <li><a href="project2/project-2.html">Project 2</a></li>
-        <li><a href="project3/project-3.html">Project 3</a></li>
-    </ul>
+    <div>
+        <p style="font-size: large;">Projects:</p>
+        <ul>
+            <li><a href="project1/project-1.html" target="_blank">Project 1</a></li>
+            <li><a href="project2/project-2.html" target="_blank">Project 2</a></li>
+            <li><a href="project3/project-3.html" target="_blank">Project 3</a></li>
+        </ul>
 
-    My <a href="ambient.html" target="_blank">ambient</a> website
+
+        <p style="font-size: large;">Exercises:</p>
+        <ul>
+            <li>My <a href="ambient.html" target="_blank">ambient</a> website</li>
+            <li>Website as... diary entries</li>
+        </ul>
+        
+    </div>
+    
+
+    
 </body>
 </html>
