@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary Pop-Up</title>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background-image: url('bedroom.gif');
+            background-size: cover;
+            background-repeat: no-repeat; 
+            background-position: center;
+            position: relative;
+        }
+
+        img {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) rotate(-5deg);
+            bottom: 20px;
+            width: 150px;
+            height: auto;
+            cursor: pointer; /* Makes the image clickable */
+        }
+
+        /* Popup window styling */
+        .popup {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 2px solid black;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            width: 300px; /* Adjust width for readability */
+            text-align: center; /* Centers text in the popup */
+        }
+
+        /* Close button styling */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="diary.png" alt="Diary Image" id="diary">
+
+    <!-- Popup container -->
+    <div class="popup" id="popup">
+        <span class="close" id="close">&times;</span>
+        <p id="entry-text"></p>
+    </div>
+
+    <script>
+        // Array of diary entries
+        const diaryEntries = [
+            "entry1.html",
+            "Entry 2: A bit overwhelmed with work today, but I managed to finish everything.",
+            "Entry 3: Went for a walk in the park. The weather was beautiful and calming.",
+            "Entry 4: Had an amazing dinner! Tried out a new recipe and it turned out great.",
+            "Entry 5: Feeling grateful for everything in my life. It's a good day to reflect."
+        ];
+
+        // Get elements from the DOM
+        const diary = document.getElementById("diary");
+        const popup = document.getElementById("popup");
+        const closeBtn = document.getElementById("close");
+        const entryText = document.getElementById("entry-text");
+
+        let currentEntryIndex = 0; // Tracks the current diary entry
+
+        // Function to show the popup with the next diary entry
+        function showPopup() {
+            // Show the popup
+            popup.style.display = "block";
+
+            // Display the current diary entry
+            entryText.textContent = diaryEntries[currentEntryIndex];
+
+            // Move to the next entry, looping back to the first if necessary
+            currentEntryIndex = (currentEntryIndex + 1) % diaryEntries.length;
+        }
+
+        // Function to hide the popup
+        function closePopup() {
+            popup.style.display = "none";
+        }
+
+        // Event listener to trigger the popup when the diary image is clicked
+        diary.addEventListener("click", showPopup);
+
+        // Event listener to close the popup when the close button is clicked
+        closeBtn.addEventListener("click", closePopup);
+    </script>
+</body>
+
+</html>
