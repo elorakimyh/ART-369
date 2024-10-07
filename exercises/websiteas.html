@@ -27,12 +27,12 @@
             bottom: 20px;
             width: 150px;
             height: auto;
-            cursor: pointer; /* Makes the image clickable */
+            cursor: pointer;
         }
 
-        /* Popup window styling */
+        
         .popup {
-            display: none; /* Initially hidden */
+            display: none; 
             position: fixed;
             top: 50%;
             left: 50%;
@@ -42,11 +42,11 @@
             border: 2px solid black;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             z-index: 1000;
-            width: 300px; /* Adjust width for readability */
-            text-align: center; /* Centers text in the popup */
+            width: 300px; 
+            text-align: center; 
         }
 
-        /* Close button styling */
+        
         .close {
             position: absolute;
             top: 10px;
@@ -60,14 +60,14 @@
 <body>
     <img src="diary.png" alt="Diary Image" id="diary">
 
-    <!-- Popup container -->
+    
     <div class="popup" id="popup">
         <span class="close" id="close">&times;</span>
         <p id="entry-text"></p>
     </div>
 
     <script>
-        // Array of diary entries
+        
         const diaryEntries = [
             "Entry 1: Today was a great day. I spent time with friends and enjoyed the sunshine.",
             "Entry 2: A bit overwhelmed with work today, but I managed to finish everything.",
@@ -76,35 +76,35 @@
             "Entry 5: Feeling grateful for everything in my life. It's a good day to reflect."
         ];
 
-        // Get elements from the DOM
+        
         const diary = document.getElementById("diary");
         const popup = document.getElementById("popup");
         const closeBtn = document.getElementById("close");
         const entryText = document.getElementById("entry-text");
 
-        let currentEntryIndex = 0; // Tracks the current diary entry
+        let currentEntryIndex = 0; 
 
-        // Function to show the popup with the next diary entry
+        
         function showPopup() {
-            // Show the popup
+            
             popup.style.display = "block";
 
-            // Display the current diary entry
+            
             entryText.textContent = diaryEntries[currentEntryIndex];
 
-            // Move to the next entry, looping back to the first if necessary
+            
             currentEntryIndex = (currentEntryIndex + 1) % diaryEntries.length;
         }
 
-        // Function to hide the popup
+        
         function closePopup() {
             popup.style.display = "none";
         }
 
-        // Event listener to trigger the popup when the diary image is clicked
+        
         diary.addEventListener("click", showPopup);
 
-        // Event listener to close the popup when the close button is clicked
+        
         closeBtn.addEventListener("click", closePopup);
     </script>
 </body>
