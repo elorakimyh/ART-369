@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,19 +14,26 @@
         body {
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
+            display: grid;
+            place-items: center;
             height: 100vh;
             overflow: hidden;
-            position: relative;
             background-color: #faecdb;
+        }
+
+        .wrapper{
+            position: relative;
+            width: 80vw;
+            height: 80vh;
         }
 
         .table {
             width: 80%; 
             height: auto; 
-            transform: translateY(40%);
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translate(-50% , -50%);
         }
 
         .food {
@@ -83,66 +96,69 @@
 <body>
     <img src="table.png" alt="Table" class="table">
 
-    <div class="hover-div dandan" data-hover="Chef Jiang">
-        <a href="chefjiang.html" target="_blank"><img src="dandan.png" alt="Chef Jiang" class="food dandan"></a>
-    </div>
 
-    <div class="hover-div drunkennoodle" data-hover="Noa">
-        <a href="noa.html" target="_blank"><img src="drunkennoodle.png" alt="Noa" class="food drunkennoodle"></a>
+    <div class="wrapper">
+        <div class="hover-div dandan" data-hover="Chef Jiang">
+            <a href="chefjiang.html" target="_blank"><img src="dandan.png" alt="Chef Jiang" class="food dandan"></a>
+        </div>
+    
+        <div class="hover-div drunkennoodle" data-hover="Noa">
+            <a href="noa.html" target="_blank"><img src="drunkennoodle.png" alt="Noa" class="food drunkennoodle"></a>
+        </div>
+    
+        <div class="hover-div havenhot" data-hover="Haven Hot Chicken">
+            <a href="havenhotchicken.html" target="_blank"><img src="havenhot.png" alt="Haven Hot Chicken" class="food havenhot"></a>
+        </div>
+    
+        <div class="hover-div hotpot" data-hover="Jin Fu Hot Pot">
+            <a href="jinfuhotpot.html" target="_blank"><img src="hotpot.png" alt="Jin Fu Hot Pot" class="food hotpot"></a>
+        </div>
+    
+        <div class="hover-div kfc" data-hover="bb.Q Chicken">
+            <a href="bbqchicken.html" target="_blank"><img src="kfc.png" alt="bb.Q Chicken" class="food kfc"></a>
+        </div>
+    
+        <div class="hover-div malatang" data-hover="Tiger Daddy">
+            <a href="tigerdaddy.html" target="_blank"><img src="malatang.png" alt="Tiger Daddy" class="food malatang"></a>
+        </div>
+    
+        <div class="hover-div olea" data-hover="olea">
+            <a href="olea.html" target="_blank"><img src="olea.png" alt="olea" class="food olea"></a>
+        </div>
+    
+        <div class="hover-div olmo" data-hover="Olmo's">
+            <a href="olmo's.html" target="_blank"><img src="olmo.png" alt="Olmo's" class="food olmo"></a>
+        </div>
+    
+        <div class="hover-div padthai" data-hover="Pad Thai Restaurant">
+            <a href="padthairestaurant.html" target="_blank"><img src="padthai.png" alt="Pad Thai Restaurant" class="food padthai"></a>
+        </div>
+    
+        <div class="hover-div poke" data-hover="Pokemoto">
+            <a href="pokemoto.html" target="_blank"><img src="poke.png" alt="Pokemoto" class="food poke"></a>
+        </div>
+    
+        <div class="hover-div ramen" data-hover="Mecha Noodle Bar">
+            <a href="mechanoodlebar.html" target="_blank"><img src="ramen.png" alt="Mecha Noodle Bar" class="food ramen"></a>
+        </div>
+    
+        <div class="hover-div pho" data-hover="Pho Ketkeo">
+            <a href="photketkeo.html" target="_blank"><img src="pho.png" alt="Pho Ketkeo" class="food pho"></a>
+        </div>
+    
+        <div class="hover-div tibetan" data-hover="Tibetan Kitchen">
+            <a href="tibetankitchen.html" target="_blank"><img src="tibetan.png" alt="Tibetan Kitchen" class="food tibetan"></a>
+        </div>
+    
+        <div class="hover-div zinc" data-hover="ZINC">
+            <a href="zinc.html" target="_blank"><img src="zinc.png" alt="ZINC" class="food zinc"></a>
+        </div>
+    
+        <div class="hover-div sherkaan" data-hover="Sherkaan">
+            <a href="sherkaan.html" target="_blank"><img src="sherkaan.png" alt="Sherkaan" class="food sherkaan"></a>
+        </div>
     </div>
-
-    <div class="hover-div havenhot" data-hover="Haven Hot Chicken">
-        <a href="havenhotchicken.html" target="_blank"><img src="havenhot.png" alt="Haven Hot Chicken" class="food havenhot"></a>
-    </div>
-
-    <div class="hover-div hotpot" data-hover="Jin Fu Hot Pot">
-        <a href="jinfuhotpot.html" target="_blank"><img src="hotpot.png" alt="Jin Fu Hot Pot" class="food hotpot"></a>
-    </div>
-
-    <div class="hover-div kfc" data-hover="bb.Q Chicken">
-        <a href="bbqchicken.html" target="_blank"><img src="kfc.png" alt="bb.Q Chicken" class="food kfc"></a>
-    </div>
-
-    <div class="hover-div malatang" data-hover="Tiger Daddy">
-        <a href="tigerdaddy.html" target="_blank"><img src="malatang.png" alt="Tiger Daddy" class="food malatang"></a>
-    </div>
-
-    <div class="hover-div olea" data-hover="olea">
-        <a href="olea.html" target="_blank"><img src="olea.png" alt="olea" class="food olea"></a>
-    </div>
-
-    <div class="hover-div olmo" data-hover="Olmo's">
-        <a href="olmo's.html" target="_blank"><img src="olmo.png" alt="Olmo's" class="food olmo"></a>
-    </div>
-
-    <div class="hover-div padthai" data-hover="Pad Thai Restaurant">
-        <a href="padthairestaurant.html" target="_blank"><img src="padthai.png" alt="Pad Thai Restaurant" class="food padthai"></a>
-    </div>
-
-    <div class="hover-div poke" data-hover="Pokemoto">
-        <a href="pokemoto.html" target="_blank"><img src="poke.png" alt="Pokemoto" class="food poke"></a>
-    </div>
-
-    <div class="hover-div ramen" data-hover="Mecha Noodle Bar">
-        <a href="mechanoodlebar.html" target="_blank"><img src="ramen.png" alt="Mecha Noodle Bar" class="food ramen"></a>
-    </div>
-
-    <div class="hover-div pho" data-hover="Pho Ketkeo">
-        <a href="photketkeo.html" target="_blank"><img src="pho.png" alt="Pho Ketkeo" class="food pho"></a>
-    </div>
-
-    <div class="hover-div tibetan" data-hover="Tibetan Kitchen">
-        <a href="tibetankitchen.html" target="_blank"><img src="tibetan.png" alt="Tibetan Kitchen" class="food tibetan"></a>
-    </div>
-
-    <div class="hover-div zinc" data-hover="ZINC">
-        <a href="zinc.html" target="_blank"><img src="zinc.png" alt="ZINC" class="food zinc"></a>
-    </div>
-
-    <div class="hover-div sherkaan" data-hover="Sherkaan">
-        <a href="sherkaan.html" target="_blank"><img src="sherkaan.png" alt="Sherkaan" class="food sherkaan"></a>
-    </div>
+    
 
 </body>
 </html>
-
