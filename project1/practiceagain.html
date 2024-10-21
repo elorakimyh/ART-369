@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Feast</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .table {
+            width: 80%; 
+            height: auto; 
+            transform: translateY(40%);
+        }
+
+        .food {
+            position: absolute;
+            width: 200px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .food:hover {
+            transform: rotate(5deg);
+        }
+
+        /* Hover-div should not affect the absolute positioning */
+        .hover-div {
+            position: absolute; /* This ensures the hover-div doesn't disrupt absolute layout */
+        }
+
+        /* Hover text styling */
+        .hover-div::after {
+            content: attr(data-hover); /* This uses the data-hover attribute for text */
+            position: absolute;
+            bottom: 0; /* Places the text at the bottom of the image */
+            left: 50%; /* Aligns the text horizontally */
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            white-space: nowrap;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;  
+        }
+
+        /* Show the text on hover */
+        .hover-div:hover::after {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .dandan {top: 52%; left: 13%; width: 220px;}
+        .drunkennoodle {top: 39%; left: 45%;}
+        .havenhot {top: 44%; left: 45%; width: 260px;}
+        .hotpot {top: 33%; left: 59%; width: 190px;}
+        .kfc {top: 22%; left: 44%; width: 250px;}
+        .malatang {top: 36%; left: 26%; width: 190px;}
+        .olea {top: 63%; left: 24%;}
+        .ramen {top: 48%; left: 73%;}
+        .padthai {top: 62%; left: 46%; width: 210px;}
+        .poke {top: 31%; left: 15%;}
+        .olmo {top: 18%; left: 36%; width: 170px;}
+        .pho {top: 23%; left: 26%;}
+        .tibetan {top: 53%; left: 33%; width: 250px;}
+        .zinc {top: 62%; left: 57%; width: 210px;}
+        .sherkaan {top: 70%; left: 33%; width: 210px;}
+    </style>
+</head>
+
+<body>
+    <img src="table.png" alt="Table" class="table">
+
+    <div class="hover-div dandan" data-hover="Chef Jiang">
+        <img src="dandan.png" alt="Chef Jiang" class="food dandan">
+    </div>
+
+    <div class="hover-div drunkennoodle" data-hover="Noa">
+        <img src="drunkennoodle.png" alt="Noa" class="food drunkennoodle">
+    </div>
+
+    <div class="hover-div havenhot" data-hover="Haven Hot Chicken">
+        <img src="havenhot.png" alt="Haven Hot Chicken" class="food havenhot">
+    </div>
+
+    <div class="hover-div hotpot" data-hover="Jin Fu Hot Pot">
+        <img src="hotpot.png" alt="Jin Fu Hot Pot" class="food hotpot">
+    </div>
+
+    <div class="hover-div kfc" data-hover="bb.Q Chicken">
+        <img src="kfc.png" alt="bb.Q Chicken" class="food kfc">
+    </div>
+
+    <div class="hover-div malatang" data-hover="Tiger Daddy">
+        <img src="malatang.png" alt="Tiger Daddy" class="food malatang">
+    </div>
+
+    <div class="hover-div olea" data-hover="olea">
+        <img src="olea.png" alt="olea" class="food olea">
+    </div>
+
+    <div class="hover-div olmo" data-hover="Olmo's">
+        <img src="olmo.png" alt="Olmo's" class="food olmo">
+    </div>
+
+    <div class="hover-div padthai" data-hover="Pad Thai Restaurant">
+        <img src="padthai.png" alt="Pad Thai Restaurant" class="food padthai">
+    </div>
+
+    <div class="hover-div poke" data-hover="Pokemoto">
+        <img src="poke.png" alt="Pokemoto" class="food poke">
+    </div>
+
+    <div class="hover-div ramen" data-hover="Mecha Noodle Bar">
+        <img src="ramen.png" alt="Mecha Noodle Bar" class="food ramen">
+    </div>
+
+    <div class="hover-div pho" data-hover="Pho Ketkeo">
+        <img src="pho.png" alt="Pho Ketkeo" class="food pho">
+    </div>
+
+    <div class="hover-div tibetan" data-hover="Tibetan Kitchen">
+        <img src="tibetan.png" alt="Tibetan Kitchen" class="food tibetan">
+    </div>
+
+    <div class="hover-div zinc" data-hover="ZINC">
+        <img src="zinc.png" alt="ZINC" class="food zinc">
+    </div>
+
+    <div class="hover-div sherkaan" data-hover="Sherkaan">
+        <img src="sherkaan.png" alt="Sherkaan" class="food sherkaan">
+    </div>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Feast</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f0f0f0; /* Optional: adds background color */
+        }
+
+        .table-container {
+            position: relative;
+            width: 80vw; /* Responsive width */
+            height: 50vh; /* Responsive height */
+            max-width: 1200px; /* Optional: max width for larger screens */
+            max-height: 800px; /* Optional: max height for larger screens */
+        }
+
+        .table {
+            width: 100%; /* Table fits container */
+            height: auto; /* Adjust height automatically */
+        }
+
+        .food {
+            position: absolute;
+            width: 8%; /* Adjusted width for food images */
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .food:hover {
+            transform: rotate(5deg);
+        }
+
+        /* Absolute positions based on the fixed aspect ratio of the table */
+        .dandan { top: 60%; left: 15%; }
+        .drunkennoodle { top: 40%; left: 45%; }
+        .havenhot { top: 45%; left: 55%; }
+        .hotpot { top: 35%; left: 75%; }
+        .kfc { top: 25%; left: 50%; }
+        .malatang { top: 40%; left: 30%; }
+        .olea { top: 65%; left: 20%; }
+        .ramen { top: 55%; left: 70%; }
+        .padthai { top: 65%; left: 50%; }
+        .poke { top: 35%; left: 15%; }
+        .olmo { top: 20%; left: 40%; }
+        .pho { top: 25%; left: 30%; }
+        .tibetan { top: 55%; left: 40%; }
+        .zinc { top: 65%; left: 60%; }
+        .sherkaan { top: 70%; left: 35%; }
+
+    </style>
+</head>
+
+<body>
+    <div class="table-container">
+        <img src="table.png" alt="Table" class="table">
+
+        <img src="dandan.png" alt="Chef Jiang" class="food dandan">
+        <img src="drunkennoodle.png" alt="Noa" class="food drunkennoodle">
+        <img src="havenhot.png" alt="Haven Hot Chicken" class="food havenhot">
+        <img src="hotpot.png" alt="Jin Fu Hot Pot" class="food hotpot">
+        <img src="kfc.png" alt="bb.Q Chicken" class="food kfc">
+        <img src="malatang.png" alt="Tiger Daddy" class="food malatang">
+        <img src="olea.png" alt="olea" class="food olea">
+        <img src="olmo.png" alt="Olmo's" class="food olmo">
+        <img src="padthai.png" alt="Pad Thai Restaurant" class="food padthai">
+        <img src="poke.png" alt="Pokemoto" class="food poke">
+        <img src="ramen.png" alt="Mecha Noodle Bar" class="food ramen">
+        <img src="pho.png" alt="Pho Ketkeo" class="food pho">
+        <img src="tibetan.png" alt="Tibetan Kitchen" class="food tibetan">
+        <img src="zinc.png" alt="ZINC" class="food zinc">
+        <img src="sherkaan.png" alt="Sherkaan" class="food sherkaan">
+    </div>
+</body>
+</html>
+
