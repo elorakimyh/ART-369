@@ -1,0 +1,32 @@
+body {
+  overflow: hidden;
+}
+
+.circle-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top:0px;
+  left:0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index:-100;
+}
+
+#circle {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background-color: blue;
+}
+
+input {
+  width: 100%;
+}
+
+a {
+  position:fixed;
+  left: 1em;
+  bottom: 1em;
+}
