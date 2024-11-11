@@ -1,6 +1,45 @@
-  div {
-    height: 100%;
-    margin: 0;
-    justify-content: center;
-    background-size: cover;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url('vertical.jpeg'); 
+  background-size: cover;                 
+  background-position: center;            
+  background-repeat: no-repeat;           
+  background-attachment: fixed;    
+  image-resolution: from-image 300dpi;       
+}
+
+body {
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  height: 100vh;           
+}
+
+img {
+  max-width: 100%;   
+  height: auto;      
+}
+
+
+.switching-image {
+  max-width: 300px; 
+  height: auto;     
+  animation: switch-image 1s infinite; 
+}
+
+
+@keyframes switch-image {
+  0% {
+      content: url('us.png'); 
+  }
+  50% {
+      content: url('start.png'); 
+  }
+  100% {
+      content: url('us.png'); 
   }
