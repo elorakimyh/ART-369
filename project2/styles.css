@@ -9,8 +9,7 @@ body {
   background-size: cover;                 
   background-position: center;            
   background-repeat: no-repeat;           
-  background-attachment: fixed;    
-  image-resolution: from-image 300dpi;       
+  background-attachment: fixed;        
 }
 
 body {
@@ -25,12 +24,20 @@ img {
   height: auto;      
 }
 
+.about-page {
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Courier New', Courier, monospace;
+}
 
 .switching-image {
-  max-width: 300px; 
-  height: auto;     
+  max-width: 250px; 
+  height: auto;
   animation: switch-image 1s infinite; 
 }
+
 
 
 @keyframes switch-image {
