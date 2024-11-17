@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My ambient website</title>
+    <title>Ambient Website</title>
 
     <style>
         body {
@@ -14,70 +14,121 @@
             background: linear-gradient(135deg, #355070, #6d597a, #b56576, #e56b6f, #eaac8b);
             background-size: 400% 400%;
             animation: gradientAnimation 30s ease infinite;
+            overflow: hidden; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         @keyframes gradientAnimation {
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
         }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
+        @keyframes blurAnimation {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scale(0.8);
+                filter: blur(5px);
             }
-            100% {
-                transform: rotate(360deg);
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+                filter: blur(0px);
             }
-        }
-
-        .shape {
-            position: absolute; /* Allow positioning anywhere on the screen */
-            top: 0; /* Start at the top */
-            animation: spin 3s linear infinite; /* Add spinning animation */
-            
-        }
-
-        .square {
-            width: 180px;
-            height: 180px;
-            background: orange;
-            background: linear-gradient(45deg, #d8e2dc, #ffe5d9, #ffcad4, #f4acb7, #9d8189);
         }
 
         .circle {
-            width: 185px;
-            height: 185px;
+            position: absolute;
             border-radius: 50%;
-            background: orange;
-            background: linear-gradient(45deg, #e5989b,#ff9a9e, #fecfef);
-
+            animation: blurAnimation 5s ease-in-out infinite;
+            mix-blend-mode: screen;
         }
 
-        .triangle_up {
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0 110px 180px 110px;
-            border-color: transparent transparent orange transparent;
-            
+        .circle-1 {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, #ff9a9e, #fecfef);
+            top: 20%;
+            left: 30%;
+            animation-delay: 0s;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #f6d365, #fda085);
+            top: 60%;
+            left: 50%;
+            animation-delay: 1s;
+        }
+
+        .circle-3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, #84fab0, #8fd3f4);
+            top: 40%;
+            left: 70%;
+            animation-delay: 2s;
+        }
+
+        .circle-4 {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, #a6c0fe, #f68084);
+            top: 70%;
+            left: 20%;
+            animation-delay: 3s;
+        }
+
+        .circle-5 {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #ffecd2, #fcb69f);
+            top: 10%;
+            left: 80%;
+            animation-delay: 4s;
+        }
+
+        .circle-6 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #d299c2, #fef9d7);
+            top: 25%;
+            left: 5%;
+            animation-delay: 2.5s;
+        }
+
+        .circle-7 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #fdfbfb, #ebedee);
+            top: 10%;
+            left: 50%;
+            animation-delay: 0.9s;
         }
 
     </style>
-
 </head>
 
 <body>
-    <div class="shape circle" style="left: 200px; top: 305px"></div>
-    <div class="shape triangle_up" style="left: 610px; top: 305px"></div>
-    <div class="shape square" style="left: 1050px; top: 305px"></div>
-
-
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="circle circle-3"></div>
+    <div class="circle circle-4"></div>
+    <div class="circle circle-5"></div>
+    <div class="circle circle-6"></div>
+    <div class="circle circle-7"></div>
 </body>
+
 </html>
