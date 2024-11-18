@@ -9,6 +9,7 @@ html, body {
 body {
   background: url('vertical.jpeg') center/cover no-repeat fixed;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
