@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background: url('vertical.jpeg') center/cover no-repeat fixed;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.bottom-image {
+    position: absolute;
+    bottom: -140px; 
+    left: 49%; 
+    transform: translateX(-50%);
+}
+
