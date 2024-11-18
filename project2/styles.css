@@ -1,4 +1,5 @@
 html, body {
+  background-color: #ede8d0;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -7,11 +8,19 @@ html, body {
 }
 
 body {
-  background: url('vertical.jpeg') center/cover no-repeat fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.picture-one {
+  position: absolute; /* Override flexbox centering */
+  top: -; /* Move to the top of the page */
+  left: 0; /* Move to the left of the page */
+  max-width: 450px; /* Optional: Control size */
+  height: auto; /* Maintain aspect ratio */
+  z-index: 10; /* Ensure it appears above other content */
 }
 
 .switching-image {
@@ -40,3 +49,4 @@ body {
   text-decoration: none;
   font-size: 18px;
 }
+

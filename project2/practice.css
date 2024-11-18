@@ -1,0 +1,48 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  body {
+    background: url('vertical.jpeg') center/cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .switching-image {
+    max-width: 250px;
+    height: auto;
+    animation: switch-image 1s infinite;
+  }
+  
+  @keyframes switch-image {
+    0%, 100% {
+      content: url('us.png');
+    }
+    50% {
+      content: url('start.png');
+    }
+  }
+  
+  .about-page {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+  }
+  
+  .about-link {
+    color: #E37383;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .picture-one {
+    position: absolute;
+    top: 5;
+    left: 10;
+  }

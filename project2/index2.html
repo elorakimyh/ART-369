@@ -4,13 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question 1</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        html, body {
+            background-color: #ede8d0;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        img.picture-one {
+            position: relative;
+            top: -300px; /* Adjust to balance layout */
+            max-width: 80%;
+            animation: rotate-image 2s infinite ease-in-out;
+        }
+
+        @keyframes rotate-image {
+            0%, 50%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        .quiz-container {
+            text-align: center;
+            margin-top: -500px;
+        }
+
+        .quiz-question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-answers {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            width: 80%;
+        }
+
+        .answer-box {
+            padding: 10px;
+            border: 2px solid #E37383;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 18px;
+            background-color: #fff;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+    </style>
 </head>
 <body>
-    <img class="picture-one" src="question-1/minius-bw.png" alt="Question 1 Picture 1">
+    <img class="picture-one" src="question-1/minius-bw.png" alt="Question 1 Picture">
 
-    
-
-    <script src="main.js"></script>
+    <div class="quiz-container">
+        <div class="quiz-question">How did we first meet?</div>
+        <div class="quiz-answers">
+            <div class="answer-box">A. We bumped into each other</div>
+            <div class="answer-box">B. We were college suitemates</div>
+            <div class="answer-box">C. We were Instagram mutuals</div>
+            <div class="answer-box">D. You stole my coffee at the elm</div>
+        </div>
+    </div>
 </body>
 </html>
