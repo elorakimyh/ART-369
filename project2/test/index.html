@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="contact form example">
+    <title>Google Sheets as CMS</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- This demo is based on the following code: https://github.com/dwyl/learn-to-send-email-via-google-script-html-no-server, as well as tutorials:
+    https://www.youtube.com/watch?v=15y1D1mGKdE. I also used chatGPT to modify the code. -->
+</head>
+
+<body>
+    <div style="font-size: small;">This website posts and displays memories from this 
+        <a href="https://docs.google.com/spreadsheets/d/17bqUWENcbxpWSfYrgLXoHhq_UDd62TJr6eIOkeYuWfc/edit?usp=sharing">Google Sheet</a>.
+    </div>
+
+    <div style="font-size: small;">
+        <a href="form.html">Submit a memory here!</a>
+    </div>
+
+    <h1 class="title">The Love Letter Project:<br>spreading 🤍 one 💌 at a time</h1>
+    <ol id="sheetData"></ol>
+
+    <script src="get-data.js"></script>
+</body>
+</html>
+

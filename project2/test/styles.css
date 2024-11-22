@@ -1,0 +1,58 @@
+/* General Styles */
+* {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #F8C8DC;
+}
+
+/* Fieldset Styling */
+fieldset {
+    border: 1px solid black;
+    margin: 0px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Label Styling */
+label {
+    display: block;
+}
+
+/* Honeypot Field (Hidden) */
+.honeypot-field {
+    display: none;
+}
+
+/* Form Elements */
+.form-elements {
+    border: 1px solid black;
+}
+
+/* List Items */
+li {
+    margin-bottom: 1em;
+}
+
+/* Timestamp (Hidden) */
+.Timestamp {
+    display: none;
+}
+
+/* Title Styling */
+.title {
+    text-align: center;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Image Styling */
+img {
+    width: 50px; /* Adjusted to a smaller size */
+    height: 50px; /* Maintain square aspect ratio */
+    cursor: pointer;
+    position: absolute; /* For random placement */
+    background-color: transparent;
+    border-radius: 10%; /* Optional: Add rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Optional: Add a shadow */
+}

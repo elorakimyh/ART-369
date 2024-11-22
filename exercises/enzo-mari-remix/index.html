@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enzo Mari</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffc06c, #a5f0c5);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+            display: inline-block;
+        }
+
+        img:hover {
+            transform: scale(1.1) rotate(5deg);
+            filter: brightness(1.2);
+        }
+
+        div {
+            display: inline-block;
+            position: absolute;
+        }
+
+        .credit {
+            position: absolute;
+            bottom: 10px;
+            font-size: 14px;
+            color: black;
+        }
+
+        .credit a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .credit a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="credit">This website is inspired by the <a href="https://enzomari.com/">Enzo Mari archive</a>.</div>
+
+    <script>
+        const images = [
+            'images/kitten1.jpg',
+            'images/kitten2.jpeg',
+            'images/kitten3.jpg',
+            'images/kitten4.jpg',
+            'images/kitten5.png',
+            'images/kitten6.jpg',
+            'images/kitten7.jpg',
+            'images/kitten8.jpg',
+            'images/kitten9.jpg',
+            'images/kitten10.jpg',
+            'images/kitten11.jpg',
+            'images/kitten12.jpeg',
+            'images/kitten13.jpg',
+            'images/kitten14.jpeg',
+            'images/kitten15.jpeg',
+            'images/kitten16.jpg',
+            'images/kitten17.jpg',
+            'images/kitten18.jpg',
+            'images/kitten19.jpg',
+            'images/kitten20.jpg',
+            'images/kitten21.png',
+        ];
+
+        function getRandomImage() {
+            return images[Math.floor(Math.random() * images.length)];
+        }
+
+        function getRandomPosition() {
+            const x = Math.floor(Math.random() * window.innerWidth);
+            const y = Math.floor(Math.random() * window.innerHeight);
+            return { x, y };
+        }
+
+        function addImage() {
+            const newImage = document.createElement('img');
+            newImage.src = getRandomImage();
+
+            newImage.style.width = `${Math.floor(Math.random() * (300 - 100 + 1) + 100)}px`;
+            newImage.style.opacity = Math.random() * 0.8 + 0.2;
+            newImage.style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`;
+
+            const position = getRandomPosition();
+            newImage.style.position = 'absolute';
+            newImage.style.left = `${position.x}px`;
+            newImage.style.top = `${position.y}px`;
+
+            newImage.addEventListener('click', addImage);
+
+            document.body.appendChild(newImage);
+        }
+
+        addImage();
+    </script>
+</body>
+
+</html>

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- command backslash is to make a comment -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>elora kim</title>
 
     <style>
-
         body {
             margin: 0;
             height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background: linear-gradient(135deg, #348756, #2e7775, #1e6c8e);
             background-size: 400% 400%;
             animation: gradientAnimation 8s ease infinite;
+            font-family: monospace;
+            color: white;
         }
 
         @keyframes gradientAnimation {
@@ -28,9 +31,8 @@
             }
         }
 
-        body{
-            padding-left: 22vw;
-            padding-top: 30vh;
+        .content-wrapper {
+            text-align: left; /* Keeps the text aligned to the left */
         }
 
         .gradient-text {
@@ -38,7 +40,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
 
         .pop-out {
             display: inline-block;
@@ -73,40 +74,33 @@
             }
         }
 
-
-
     </style>
-    
-
 </head>
 
-<body style="font-family: monospace; color: white;">
-    <p style="font-size: xx-large;">
-        Hi 👋🏻 I'm <span class="pop-out"><em><b>Elora</b></em></span>❕ <br> Welcome to my website for <s class="gradient-text">ART 369: Software for People</s>.
-    </p>
+<body>
+    <div class="content-wrapper">
+        <p style="font-size: xx-large;">
+            Hi 👋🏻 I'm <span class="pop-out"><em><b>Elora</b></em></span>❕ <br> Welcome to my website for <s class="gradient-text">ART 369: Software for People</s>.
+        </p>
 
-    <div>
-        <p style="font-size: large;">Projects:</p>
-        <ul>
-            <li><a href="project1/thetable.html" target="_blank">Project 1: Collection</a></li>
-            <li><a href="project2/index.html" target="_blank">Project 2: Tool for One</a></li>
-            <li><a href="https://www.figma.com/deck/hkaSHm4jB2ORSNMuffMi14/WYSIWYG?node-id=2-635&t=keXq6zRbvWKe9RjS-1" target="_blank">Project 3: WYSIWYG</a></li>
-        </ul>
+        <div>
+            <p style="font-size: large;">Projects:</p>
+            <ul>
+                <li><a href="project1/thetable.html" target="_blank">Project 1: Collection</a></li>
+                <li><a href="project2/index.html" target="_blank">Project 2: Tool for One</a></li>
+                <li><a href="https://www.figma.com/deck/hkaSHm4jB2ORSNMuffMi14/WYSIWYG?node-id=2-635&t=keXq6zRbvWKe9RjS-1" target="_blank">Project 3: WYSIWYG</a></li>
+            </ul>
 
-
-        <p style="font-size: large;">Exercises:</p>
-        <ul>
-            <li><a href="exercises/ambient.html" target="_blank">Ambient Website</a></li>
-            <li><a href="exercises/websiteas.html" target="_blank">Website as...diary entries</a></li>
-            <li><a href="exercises/" target="_blank">Enzo Mari</a></li>
-            <li><a href="exercises/keyboard_instrument/index.html" target="_blank">Keyboard Instrument</a></li>
-            <li><a href="exercises/input-output/index.html" target="_blank">Input-Output</a></li>
-            <li><a href="exercises/google-sheet-cms/index.html" target="_blank">Google Sheets as CMS: The Love Letter Project</a></li>
-        </ul>
-        
+            <p style="font-size: large;">Exercises:</p>
+            <ul>
+                <li><a href="exercises/ambient.html" target="_blank">Ambient Website</a></li>
+                <li><a href="exercises/websiteas.html" target="_blank">Website as...diary entries</a></li>
+                <li><a href="exercises/enzo-mari-remix/index.html" target="_blank">Enzo Mari</a></li>
+                <li><a href="exercises/keyboard_instrument/index.html" target="_blank">Keyboard Instrument</a></li>
+                <li><a href="exercises/input-output/index.html" target="_blank">Input-Output</a></li>
+                <li><a href="exercises/google-sheet-cms/index.html" target="_blank">Google Sheets as CMS: The Love Letter Project</a></li>
+            </ul>
+        </div>
     </div>
-    
-
-    
 </body>
 </html>
