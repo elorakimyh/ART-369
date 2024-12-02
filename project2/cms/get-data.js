@@ -66,8 +66,38 @@ function insertImage(item) {
   img.addEventListener('click', function () {
     alert(message);
   });
-
-
 }
+
+function getRandomPosition(max, offset) {
+  return Math.floor(Math.random() * (max - offset));
+}
+
+function sparkleEffect() {
+  const sparkle = document.getElementById('sparkle');
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+
+  // Generate random positions for the sparkle
+  const randomX = getRandomPosition(viewportWidth, sparkle.offsetWidth);
+  const randomY = getRandomPosition(viewportHeight, sparkle.offsetHeight);
+
+  // Update the sparkle position
+  sparkle.style.left = `${randomX}px`;
+  sparkle.style.top = `${randomY}px`;
+
+  // Fade in the sparkle
+  sparkle.style.opacity = 1;
+
+  // Stay visible for 2.5 seconds before fading out
+  setTimeout(() => {
+    sparkle.style.opacity = 0;
+  }, 2500); // Adjust this duration for longer visibility
+}
+
+// Trigger the sparkle effect every 4 seconds
+setInterval(sparkleEffect, 4000);
+
+
+
 
 getData(AppScriptUrl);
