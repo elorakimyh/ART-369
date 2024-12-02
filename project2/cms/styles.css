@@ -11,11 +11,12 @@
   }
 
 html, body {
+  min-height: 100%;
   font-family: "Gloria_Hallelujah", sans-serif;
 }
   
 body{
-    background: linear-gradient(45deg, #F6ACC5, #A9D975);
+  background: linear-gradient(45deg, #F6ACC5, #A9D975);
 }
 
   fieldset {
@@ -101,18 +102,24 @@ body{
     }
   }
   
+  #sparkle-link {
+    position: absolute; /* Allows movement on the page */
+    display: inline-block; /* Ensures proper layout for the link */
+  }
+  
   .sparkle-effect {
-  position: absolute;
-  width: 50px; /* Adjust size as needed */
-  opacity: 0; /* Initially invisible */
-  transition: opacity 1s ease; /* Smooth fade effect */
-  pointer-events: none; /* Avoid interfering with other elements */
-
-  /* Ensure no border, shadow, or other inherited styles */
-  border: none;
-  box-shadow: none;
-  background: transparent;
-}
+    width: 50px; /* Adjust size as needed */
+    opacity: 0; /* Initially invisible */
+    transition: opacity 1s ease; /* Smooth fade effect */
+  
+    /* Ensure no border, shadow, or other unwanted styles */
+    border: none;        /* No border */
+    box-shadow: none;    /* No shadow */
+    background: transparent; /* No background */
+    outline: none;       /* No outline */
+    text-decoration: none; /* No underline or text styles */
+  }
+  
 
   
   
