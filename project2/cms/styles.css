@@ -20,7 +20,7 @@ body{
 }
 
   fieldset {
-    border: 1px solid black;
+    border: none;
     margin: 0px;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -31,10 +31,12 @@ body{
   }
 
   #image-link{
+    padding: 10px;
     border-radius: 20px;
   }
 
   #message{
+    padding: 10px;
     border-radius: 20px;
   }
   
