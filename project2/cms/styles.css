@@ -5,125 +5,122 @@
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+
+}
 
 html, body {
   min-height: 100%;
   font-family: "Gloria_Hallelujah", sans-serif;
-  overflow: hidden;
 }
   
 body{
   background: linear-gradient(45deg, #F6ACC5, #A9D975);
 }
 
-  fieldset {
-    border: none;
-    margin: 0px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
+fieldset {
+  border: none;
+  margin: 0px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
   
-  label {
-    display: block;
-  }
+label {
+  display: block;
+}
 
-  #image-link{
-    padding: 10px;
-    border-radius: 20px;
-  }
+#image-link{
+  padding: 10px;
+  border-radius: 20px;
+}
 
-  #message{
-    padding: 10px;
-    border-radius: 20px;
-  }
+#message{
+  padding: 10px;
+  border-radius: 20px;
+}
   
-  .honeypot-field {
-    display: none;
-  }
+.honeypot-field {
+  display: none;
+}
   
-  .form-elements {
-    text-align: center;
-    border: 1px solid black;
-  }
+.form-elements {
+  text-align: center;
+  border: none;
+}
   
-  li {
-    margin-bottom: 1em;
-  }
+li {
+  margin-bottom: 1em;
+}
   
-  .Timestamp {
-    display: none;
-  }
+.Timestamp {
+  display: none;
+}
   
-  @keyframes pulse {
-    0% {
-      transform: translate(-50%, -50%) scale(1);
-      text-shadow: 0 0 5px #fff, 0 0 10px #ff9, 0 0 15px #f6a;
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(1.1);
-      text-shadow: 0 0 10px #fff, 0 0 20px #ff9, 0 0 30px #f6a;
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(1);
-      text-shadow: 0 0 5px #fff, 0 0 10px #ff9, 0 0 15px #f6a;
-    }
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    text-shadow: 0 0 5px #fff, 0 0 10px #ff9, 0 0 15px #f6a;
   }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    text-shadow: 0 0 10px #fff, 0 0 20px #ff9, 0 0 30px #f6a;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    text-shadow: 0 0 5px #fff, 0 0 10px #ff9, 0 0 15px #f6a;
+  }
+}
   
-  .title {
-    text-align: center;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2rem; 
-    color: black; 
-    animation: pulse 3s infinite ease-in-out; 
-  }
+.title {
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem; 
+  color: black; 
+  animation: pulse 3s infinite ease-in-out; 
+}
 
-  img {
-    width: 50px;
-    cursor: pointer;
-    position: absolute;
-    background-color: transparent;
-    border-radius: 10%; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  }
+img {
+  max-width: 8%;
+  max-height: 8%;
+  cursor: pointer;
+  position: absolute;
+  background-color: transparent;
+  border-radius: 10%; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
 
-  @keyframes moveHorizontally {
-    0% {
-      transform: translateX(-100%);
-    }
-    50% {
-      transform: translateX(50%);
-    }
-    100% {
-      transform: translateX(100%);
-    }
+@keyframes moveHorizontally {
+  0% {
+  transform: translateX(-100%);
   }
-  
-  #sparkle-link {
-    position: absolute; /* Allows movement on the page */
-    display: inline-block; /* Ensures proper layout for the link */
+  50% {
+  transform: translateX(50%);
   }
-  
-  .sparkle-effect {
-    width: 50px; /* Adjust size as needed */
-    opacity: 0; /* Initially invisible */
-    transition: opacity 1s ease; /* Smooth fade effect */
-  
-    /* Ensure no border, shadow, or other unwanted styles */
-    border: none;        /* No border */
-    box-shadow: none;    /* No shadow */
-    background: transparent; /* No background */
-    outline: none;       /* No outline */
-    text-decoration: none; /* No underline or text styles */
+  100% {
+  transform: translateX(100%);
   }
+}
   
+#sparkle-link {
+  position: absolute; 
+  display: inline-block; 
+  
+.sparkle-effect {
+  max-width: none;
+  max-height: none;
+  width: 60px; 
+  opacity: 0; 
+  transition: opacity 1s ease; 
+  
+  border: none;     
+  box-shadow: none; 
+  background: transparent;
+  outline: none;    
+  text-decoration: none;
+}
 
-  
-  
-  
+
