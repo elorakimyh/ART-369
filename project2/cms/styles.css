@@ -91,6 +91,12 @@ img {
   background-color: transparent;
   border-radius: 10%; 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(4);
+  z-index: 10;
 }
 
 @keyframes moveHorizontally {
@@ -122,5 +128,6 @@ img {
   outline: none;    
   text-decoration: none;
 }
+
 
 

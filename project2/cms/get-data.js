@@ -39,7 +39,7 @@ function insertImage(item) {
   const img = document.createElement('img');
   img.src = url;
   img.style.position = 'absolute';
-  img.style.visibility = 'hidden'; // Hide temporarily to measure dimensions
+  img.style.visibility = 'hidden'; 
   img.setAttribute('data-message', message);
 
   document.body.appendChild(img);
@@ -49,13 +49,12 @@ function insertImage(item) {
     const imgWidth = imgRect.width;
     const imgHeight = imgRect.height;
 
-    // Calculate random positions ensuring the image stays within bounds
-    const randomX = getRandomNumber(0, viewportWidth - imgWidth); // X position
-    const randomY = getRandomNumber(0, viewportHeight - imgHeight); // Y position
+    const randomX = getRandomNumber(0, viewportWidth - imgWidth); 
+    const randomY = getRandomNumber(0, viewportHeight - imgHeight); 
 
     img.style.left = randomX + 'px';
     img.style.top = randomY + 'px';
-    img.style.visibility = 'visible'; // Show the image once positioned
+    img.style.visibility = 'visible'; 
   };
 
   img.addEventListener('click', function () {
@@ -90,3 +89,4 @@ setInterval(sparkleEffect, 4000);
 
 
 getData(AppScriptUrl);
+

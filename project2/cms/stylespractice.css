@@ -1,3 +1,5 @@
+/* css code with popup alert message */
+
 @font-face {
     font-family: "Gloria_Hallelujah";
     src: url("Gloria_Hallelujah/GloriaHallelujah-Regular.ttf") format("truetype");
@@ -121,47 +123,5 @@
     background: transparent;
     outline: none;    
     text-decoration: none;
-  }
-
-  /* Styling for the #message div */
-#message-box {
-    position: fixed; /* Fixed position to show over the page */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust to be exactly in the center */
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    z-index: 1000; /* Ensure it stays on top */
-    display: none; /* Hide initially */
-    max-width: 80%;
-    text-align: center;
-  }
-  
-  #message-box img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-  }
-  
-  #message-box p {
-    font-size: 1.2rem;
-  }
-  
-  #close-message {
-    background-color: #FF5733;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 10px;
-    border-radius: 5px;
-  }
-  
-  /* Additional styling to make sure button looks good */
-  #close-message:hover {
-    background-color: #c13929;
   }
   
