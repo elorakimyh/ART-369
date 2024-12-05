@@ -13,6 +13,7 @@
 html, body {
   min-height: 100%;
   font-family: "Gloria_Hallelujah", sans-serif;
+  overflow: hidden;
 }
   
 body{
