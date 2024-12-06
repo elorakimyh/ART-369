@@ -8,141 +8,165 @@
         body {
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
             height: 100vh;
             overflow: hidden;
-            position: relative;
             background-color: #faecdb;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
 
-        .table {
-            width: 80%; 
-            height: auto; 
-            transform: translateY(40%);
+        h1 {
+            position: absolute;
+            font-size: 1.5em;
+            color: #333;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .food-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .food-wrapper {
+            position: absolute;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .food {
             position: absolute;
-            width: 200px;
+            width: 150px;
             height: auto;
-            transition: transform 0.3s ease;
+            filter: grayscale(100%);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 5;
         }
 
-        .food:hover {
-            transform: rotate(5deg);
-        }
-
-        .hover-div {
+        .food-overlay {
             position: absolute;
-        }
-
-        
-        .hover-div::after {
-            content: attr(data-hover); 
-            position: absolute;
-            bottom: 0; 
-            left: 50%; 
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 5px;
-            border-radius: 5px;
-            white-space: nowrap;
-            visibility: hidden;
+            width: 150px;
+            height: auto;
             opacity: 0;
+            pointer-events: none;
             transition: opacity 0.3s ease;
-            z-index: 10;  
+            z-index: 10;
         }
 
-        
-        .hover-div:hover::after {
-            visibility: visible;
+        .food-wrapper:hover .food-overlay {
             opacity: 1;
         }
 
-        .dandan {top: 52%; left: 13%; width: 220px;}
-        .drunkennoodle {top: 39%; left: 45%;}
-        .havenhot {top: 44%; left: 45%; width: 260px;}
-        .hotpot {top: 33%; left: 59%; width: 190px;}
-        .kfc {top: 22%; left: 44%; width: 250px;}
-        .malatang {top: 36%; left: 26%; width: 190px;}
-        .olea {top: 63%; left: 24%;}
-        .ramen {top: 48%; left: 73%;}
-        .padthai {top: 62%; left: 46%; width: 210px;}
-        .poke {top: 31%; left: 15%;}
-        .olmo {top: 18%; left: 36%; width: 170px;}
-        .pho {top: 23%; left: 26%;}
-        .tibetan {top: 53%; left: 33%; width: 250px;}
-        .zinc {top: 62%; left: 57%; width: 210px;}
-        .sherkaan {top: 70%; left: 33%; width: 210px;}
+        .food-wrapper:hover .food {
+            opacity: 0;
+        }
+
+        h1.hidden {
+            opacity: 0;
+        }
     </style>
 </head>
-
 <body>
-    <img src="table.png" alt="Table" class="table">
-
-    <div class="hover-div dandan" data-hover="Chef Jiang">
-        <a href="chefjiang.html" target="_blank"><img src="dandan.png" alt="Chef Jiang" class="food dandan"></a>
+    <h1 id="welcome-text">Welcome to the Feast!<br>Click on a food to view its review.</h1>
+    <div class="food-container" id="food-container">
+        <!-- Food items will be injected here by JavaScript -->
     </div>
 
-    <div class="hover-div drunkennoodle" data-hover="Noa">
-        <a href="noa.html" target="_blank"><img src="drunkennoodle.png" alt="Noa" class="food drunkennoodle"></a>
-    </div>
+    <script>
+        const foodData = [
+            { grayscale: "foods/havenhot.png", color: "foods/havenhotcolor.png" },
+            { grayscale: "foods/olmo.png", color: "foods/olmocolor.png" },
+            { grayscale: "foods/chefjiang.png", color: "foods/chefjiangcolor.png" },
+            { grayscale: "foods/pokemoto.png", color: "foods/pokemotocolor.png" },
+            { grayscale: "foods/padthai.png", color: "foods/padthaicolor.png" },
+            { grayscale: "images/bbq.png", color: "images/bbqcolor.png" },
+            { grayscale: "images/jinfu.png", color: "images/jinfucolor.png" },
+            { grayscale: "images/mecha.png", color: "images/mechacolor.png" },
+            { grayscale: "images/noa.png", color: "images/noacolor.png" },
+            { grayscale: "images/olea.png", color: "images/oleacolor.png" },
+            { grayscale: "images/phoketkeo.png", color: "images/phoketkeocolor.png" },
+            { grayscale: "images/sherkaan.png", color: "images/sherkaancolor.png" },
+            { grayscale: "images/tibetankitchen.png", color: "images/tibetankitchencolor.png" },
+            { grayscale: "images/tigerdaddy.png", color: "images/tigerdaddycolor.png" },
+            { grayscale: "images/zinc.png", color: "images/zinccolor.png" }
+        ];
 
-    <div class="hover-div havenhot" data-hover="Haven Hot Chicken">
-        <a href="havenhotchicken.html" target="_blank"><img src="havenhot.png" alt="Haven Hot Chicken" class="food havenhot"></a>
-    </div>
+        const foodContainer = document.getElementById('food-container');
+        const welcomeText = document.getElementById('welcome-text');
 
-    <div class="hover-div hotpot" data-hover="Jin Fu Hot Pot">
-        <a href="jinfuhotpot.html" target="_blank"><img src="hotpot.png" alt="Jin Fu Hot Pot" class="food hotpot"></a>
-    </div>
+        // Generate random positions without overlap
+        const positions = [];
+        const isOverlapping = (x, y) => {
+            return positions.some(pos => {
+                const dx = pos.x - x;
+                const dy = pos.y - y;
+                return Math.sqrt(dx * dx + dy * dy) < 200; // Minimum distance to avoid overlap
+            });
+        };
 
-    <div class="hover-div kfc" data-hover="bb.Q Chicken">
-        <a href="bbqchicken.html" target="_blank"><img src="kfc.png" alt="bb.Q Chicken" class="food kfc"></a>
-    </div>
+        foodData.forEach((food, index) => {
+            let x, y;
+            do {
+                x = Math.random() * 80; // Randomize horizontal position (20% padding on each side)
+                y = Math.random() * 80; // Randomize vertical position (20% padding on each side)
+            } while (isOverlapping(x, y));
 
-    <div class="hover-div malatang" data-hover="Tiger Daddy">
-        <a href="tigerdaddy.html" target="_blank"><img src="malatang.png" alt="Tiger Daddy" class="food malatang"></a>
-    </div>
+            positions.push({ x, y });
 
-    <div class="hover-div olea" data-hover="olea">
-        <a href="olea.html" target="_blank"><img src="olea.png" alt="olea" class="food olea"></a>
-    </div>
+            // Create food wrapper
+            const wrapper = document.createElement('div');
+            wrapper.className = 'food-wrapper';
+            wrapper.style.top = `${y}%`;
+            wrapper.style.left = `${x}%`;
 
-    <div class="hover-div olmo" data-hover="Olmo's">
-        <a href="olmo's.html" target="_blank"><img src="olmo.png" alt="Olmo's" class="food olmo"></a>
-    </div>
+            // Create grayscale image
+            const grayscaleImg = document.createElement('img');
+            grayscaleImg.src = food.grayscale;
+            grayscaleImg.alt = `${food.grayscale.split('/').pop()} (Grayscale)`;
+            grayscaleImg.className = 'food';
 
-    <div class="hover-div padthai" data-hover="Pad Thai Restaurant">
-        <a href="padthairestaurant.html" target="_blank"><img src="padthai.png" alt="Pad Thai Restaurant" class="food padthai"></a>
-    </div>
+            // Create color overlay image
+            const colorImg = document.createElement('img');
+            colorImg.src = food.color;
+            colorImg.alt = `${food.color.split('/').pop()} (Color)`;
+            colorImg.className = 'food-overlay';
 
-    <div class="hover-div poke" data-hover="Pokemoto">
-        <a href="pokemoto.html" target="_blank"><img src="poke.png" alt="Pokemoto" class="food poke"></a>
-    </div>
+            // Append images to wrapper
+            wrapper.appendChild(grayscaleImg);
+            wrapper.appendChild(colorImg);
 
-    <div class="hover-div ramen" data-hover="Mecha Noodle Bar">
-        <a href="mechanoodlebar.html" target="_blank"><img src="ramen.png" alt="Mecha Noodle Bar" class="food ramen"></a>
-    </div>
+            // Add hover event for welcome text
+            wrapper.addEventListener('mouseenter', () => {
+                welcomeText.classList.add('hidden');
+            });
 
-    <div class="hover-div pho" data-hover="Pho Ketkeo">
-        <a href="photketkeo.html" target="_blank"><img src="pho.png" alt="Pho Ketkeo" class="food pho"></a>
-    </div>
+            wrapper.addEventListener('mouseleave', () => {
+                welcomeText.classList.remove('hidden');
+            });
 
-    <div class="hover-div tibetan" data-hover="Tibetan Kitchen">
-        <a href="tibetankitchen.html" target="_blank"><img src="tibetan.png" alt="Tibetan Kitchen" class="food tibetan"></a>
-    </div>
-
-    <div class="hover-div zinc" data-hover="ZINC">
-        <a href="zinc.html" target="_blank"><img src="zinc.png" alt="ZINC" class="food zinc"></a>
-    </div>
-
-    <div class="hover-div sherkaan" data-hover="Sherkaan">
-        <a href="sherkaan.html" target="_blank"><img src="sherkaan.png" alt="Sherkaan" class="food sherkaan"></a>
-    </div>
-
+            // Append wrapper to container
+            foodContainer.appendChild(wrapper);
+        });
+    </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

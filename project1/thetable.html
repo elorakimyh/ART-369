@@ -12,12 +12,12 @@
             height: 90vh; 
             margin: 0;
             background-color: #faecdb;
+            position: relative; 
         }
 
         .image-container {
             position: relative;
-            width: 10%;
-            max-width: 100px;
+            width: 100px;
             cursor: pointer;
         }
 
@@ -44,50 +44,68 @@
         }
 
         .message {
-            font-family: monospace;
-            display: none;
             position: absolute;
-            bottom: 15px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
+            text-align: center;
+            font-family: monospace;
+            opacity: 0; 
+            transition: opacity 1s ease-in-out; 
+            color: black;
         }
 
+        #message {
+            top: 5%; 
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
+        #secondMessage {
+            color: #feaec9;
+            bottom: -30px; 
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-
+        .show {
+            opacity: 1; 
+        }
     </style>
 </head>
 
 <body>
-    <div class="image-container" onclick="showMessage()">
-       
+    <div class="message" id="message">Welcome to the Table!<br>Would you like to take a seat at the Feast?</div>
+
+    <div class="image-container" onclick="showMessages()">
         <img src="table.png" alt="Table" class="normal">
         <img src="coloredtable.png" alt="Table in Pink" class="hover">
     </div>
 
-
-    <div class="message" id="message">Would you like to eat with me?</div>
-
-   
+    <div class="message" id="secondMessage">Click the table to confirm your seat...</div>
 
     <script>
-        const table = document.querySelector(".image-container");
-
-
-        function showMessage() {
+        function showMessages() {
             const messageDiv = document.getElementById('message');
+            const secondMessageDiv = document.getElementById('secondMessage');
 
-            if (messageDiv.style.display === 'block') {
-            window.location.href = "thefeast.html";
+            if (!messageDiv.classList.contains('show')) {
+                messageDiv.classList.add('show');
+                
+                setTimeout(() => {
+                    secondMessageDiv.classList.add('show');
+                }, 3000);
             } else {
-            messageDiv.style.display = 'block';
+                window.location.href = "thefeast.html";
             }
         }
-
-       
     </script>
-
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
