@@ -129,33 +129,70 @@
                 margin-top: 40px;
             }
         }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 2px solid black;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            text-align: center;
+        }
+
+        .popup p {
+            margin: 0;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div class="welcome-text" id="welcome-text">Welcome to the Feast!<br>Click on a restaurant food to view its review.</div>
     <div class="food-container" id="food-container"></div>
 
+    <div class="popup" id="popup">
+        <span class="close" id="close">&times;</span>
+        <p id="popup-text"></p>
+    </div>
+
     <script>
         const foodData = [
-            { grayscale: "foods/havenhot.png", color: "foods/havenhotcolor.png" },
-            { grayscale: "foods/olmo.png", color: "foods/olmocolor.png" },
-            { grayscale: "foods/chefjiang.png", color: "foods/chefjiangcolor.png" },
-            { grayscale: "foods/pokemoto.png", color: "foods/pokemotocolor.png" },
-            { grayscale: "foods/padthai.png", color: "foods/padthaicolor.png" },
-            { grayscale: "foods/bbqchicken.png", color: "foods/bbqchickencolor.png" },
-            { grayscale: "foods/jinfu.png", color: "foods/jinfucolor.png" },
-            { grayscale: "foods/mecha.png", color: "foods/mechacolor.png" },
-            { grayscale: "foods/noa.png", color: "foods/noacolor.png" },
-            { grayscale: "foods/olea.png", color: "foods/oleacolor.png" },
-            { grayscale: "foods/phoketkeo.png", color: "foods/phoketkeocolor.png" },
-            { grayscale: "foods/sherkaan.png", color: "foods/sherkaancolor.png" },
-            { grayscale: "foods/tibetankitchen.png", color: "foods/tibetankitchencolor.png" },
-            { grayscale: "foods/tigerdaddy.png", color: "foods/tigerdaddycolor.png" },
-            { grayscale: "foods/zinc.png", color: "foods/zinccolor.png" }
+            { grayscale: "foods/havenhot.png", color: "foods/havenhotcolor.png", review: "Haven Hot Chicken: I have visited Haven Hot Chicken twice and tried a few dishes, including the Tendie Trio (mild) with Rob Sauce, the 'Not Chicken' nuggets made from cauliflower, and their fries. My recommendation would be to go for any of their chicken tenders, as they have a great balance of crispiness and tenderness with a satisfying amount of meat. While I have a decent spice tolerance, I find their mild level to be my limit, so keep that in mind when choosing spice levels. Unfortunately, the cauliflower nuggets were a disappointment—they were overly salty and had a mushy texture. As for the Rob Sauce, while it's decent, it didn't quite live up to the addictiveness I had hoped for. That said, Haven Hot Chicken deserves recognition as the only hot chicken spot in New Haven, and their offerings are worth a try for fans of crispy chicken." },
+            { grayscale: "foods/olmo.png", color: "foods/olmocolor.png", review: "Olmo Bagels: I have visited Olmo's twice and tried several items, including the Cacio e Pepe bagel with scallion schmear, the Okonomiyaki bagel sandwich, the Lox with Love, and the Spicy Deluxe bagel sandwich. My top recommendation is the Okonomiyaki bagel sandwich, which features a unique combination of flavors that, despite initial skepticism, turned out to be incredibly delicious. I would consider Olmo’s the best bagel shop I’ve tried. Their bread stands out for being soft and flavorful, unlike the tough or dry texture often associated with New York bagels. Additionally, their innovative fillings are well thought out and complement the bagels perfectly. As a bonus, their offerings are especially satisfying after an early morning hike up East Rock." },
+            { grayscale: "foods/chefjiang.png", color: "foods/chefjiangcolor.png", review: "Chef Jiang: I have visited Chef Jiang three times and sampled various dishes, including the Dandan Noodles, Bok Choy with Garlic, Wontons in Chili Oil, Brown Sugar Sticky Rice Cake, Cumin Lamb, and Fried Rice. My top recommendations are the Dandan Noodles and the Brown Sugar Sticky Rice Cake. Chef Jiang stands out as one of the best Chinese restaurants in town, offering a blend of modern flavors while staying true to authentic Chinese cuisine. Although I can't personally attest to its authenticity, a Chinese friend of mine speaks highly of it. Every dish I've tried has been excellent, with nothing to critique. I particularly enjoyed the Dandan Noodles, as I'm a fan of Dandan Mien, and they executed it beautifully." },
+            { grayscale: "foods/pokemoto.png", color: "foods/pokemotocolor.png", review: "Pokemoto: I’ve visited Pokemoto multiple times and always order a BYO poke bowl with a variety of mix-ins (though I usually rely on a friend to perfect the selection for me). Initially, I wasn’t a fan of raw fish and was skeptical of Pokemoto, but over time, I’ve been converted and now occasionally enjoy it. A friend from Hawaii, who used to critique Pokemoto for being far from the authentic poke found back home, has also warmed up to it and enjoys it now and then. While it’s not traditional Hawaiian poke, Pokemoto’s biggest strength lies in how they pack their bowls—the mix of flavors and textures comes together into a deliciously satisfying meal. It’s become my go-to spot on a lazy day." },
+            { grayscale: "foods/padthai.png", color: "foods/padthaicolor.png", review: "Pad Thai Restaurant: I visited this restaurant once and tried both the Pad Thai and Drunken Noodles. After hearing so many positive reviews, I was eager to try it myself. I ordered takeout, and even though I didn’t dine in, the food was still very flavorful. Both dishes had great texture and were delicious, but I would personally recommend the Drunken Noodles over the Pad Thai. In my opinion, the Drunken Noodles outshine those from Noa. Overall, it was a satisfying experience, and I can see why the restaurant has such a good reputation." },
+            { grayscale: "foods/bbqchicken.png", color: "foods/bbqchickencolor.png", review: "bb.q Chicken: I’ve visited bb.Q Chicken multiple times and have tried several dishes, including the Honey Garlic, Golden Original, Secret Sauce, and both Regular and Rose Ddeok-Bokki. I consider bb.Q Chicken to be one of the best Korean fried chicken chains in the U.S. In fact, I didn’t even need to try it in Korea because the location in New Haven already delivers excellent quality. That said, the taste and quality can vary by location—I've had a disappointing experience with the bb.Q Chicken at my local Hmart. My top recommendations are the Honey Garlic Boneless Chicken, which perfectly balances sweet honey and savory garlic, and the Golden Original Bone-In Chicken, which is incredibly crispy without feeling heavy. The batter is light yet maintains the juiciness and tenderness of the chicken. I’m not a fan of the Secret Sauce, though—it’s overly sweet and can be nauseating. As for the Ddeok-Bokki, it’s decent but nothing extraordinary. Overall, bb.Q Chicken remains a top choice for Korean fried chicken." },
+            { grayscale: "foods/jinfu.png", color: "foods/jinfucolor.png", review: "Jin Fu Hot Pot: I visited Jin Fu once and tried the Healthy Herbal Spicy Soup and Pork Tripe Chicken Soup bases, along with sliced fatty beef, beef brisket, beef chunk, Shanghai noodles, fish tofu, Japanese pumpkin, and a vegetable platter. While Jin Fu is a solid option for hot pot when I don’t want to travel all the way to Kpot, I still prefer Kpot overall. The variety of sauces and base flavors at Kpot make it my top choice, while Jin Fu’s sauce bar options felt more limited, and the base soups didn’t quite match my usual preferences. That said, it’s not a major issue, and I didn’t mind it too much. I did try a particularly fatty beef cut that melted in my mouth, but I can’t remember which one it was. The portions for each add-in were generous, and while it’s a bit on the pricier side, I would still go back again." },
+            { grayscale: "foods/mecha.png", color: "foods/mechacolor.png", review: "Mecha Noodle Bar: I’ve visited Mecha multiple times and have tried various dishes, including Banh Mi, Pork Belly, KFC, and Coconut Shrimp Baos, Firecracker Wings, Tonkotsu, Shoyu Paitan, Spicy Miso Ramen, and the Chef's Ramen of the Week. My top recommendations are any of the baos and either the Tonkotsu or Shoyu Paitan Ramen. Despite some criticisms, I think Mecha is surprisingly solid, especially on a rainy, cold day or during happy hour when you can enjoy it at a lower price. While I wouldn’t say it’s the best ramen I’ve ever had or the most authentic, it definitely delivers. The ramen has a rich umami flavor with a good depth of taste, and the chashu is wonderfully fatty, dissolving into the broth. The noodles are usually cooked to the perfect texture. The baos are a standout—offering excellent flavor combinations that go beyond just being filled bread. Overall, Mecha is a reliable choice for satisfying ramen and bao." },
+            { grayscale: "foods/noa.png", color: "foods/noacolor.png", review: "Noa: I’ve visited Noa four times and tried several dishes, including Papaya Salad, Fried Calamari, Thai Hot Wings, Noa Drunken Noodles, Grilled Flank Steak Pad See-Ew, Khao Soi, and Pork Belly. My top recommendations are the Grilled Flank Steak Pad See-Ew and the Thai Hot Wings. In my opinion, Noa surpasses its parent restaurant, September in Bangkok, both in terms of flavor and execution. They do Asian fusion exceptionally well while still preserving the essence of traditional Thai cuisine. While I’ve heard they’re known for their Drunken Noodles, I found the Pad See-Ew with flank steak to be the real standout. The steak elevates the dish with its perfect tenderness and flavor, making it a must-try. However, I did notice that my second order of the dish wasn’t quite as good as the first. Despite that, it remains highly recommended." },
+            { grayscale: "foods/olea.png", color: "foods/oleacolor.png", review: "olea: I visited Olea once and tried a variety of dishes, including Tuna Tartare, Croquetas de Rabo (Oxtail Beef-Wild Mushroom Croquettes), Pato Confitado (Duck Leg Confit), Beef Short Ribs, and Torrija (Caramelized Soaked Brioche). My top recommendations are the Croquetas de Rabo and Torrija. Olea stands out as hands down the best restaurant in New Haven. The croquettes and dessert were the highlights of the meal, offering unique flavors and textures that were truly mind-opening. The croquettes, in particular, had an almost angelic melt-in-your-mouth quality. While it’s very pricey, I believe it’s worth the cost for such an exceptional dining experience." },
+            { grayscale: "foods/phoketkeo.png", color: "foods/phoketkeocolor.png", review: "Pho Ketkeo: I visited this pho place once and tried the Meatball and Sliced Steak Pho, along with Spring Rolls. My recommendation is that any pho is fine here. To be honest, I don't remember much about the experience since it was early in my first year, but I recall it being decent. The food wasn’t bad, though you could tell that the soup base wasn’t very authentic. I don’t have too much to say about it, but it was good enough to visit, and I had to choose a 15th restaurant for my list." },
+            { grayscale: "foods/sherkaan.png", color: "foods/sherkaancolor.png", review: "Sherkaan: I’ve visited Sherkaan twice and tried dishes like Okra Fries, Punjabi Samosa, Butter Chicken, Goat Curry, Garlic and Rosemary Apricot Naan, and Mango Lassi. My top recommendations are the Butter Chicken, Garlic Naan, and Mango Lassi. While Sherkaan isn’t fully authentic Indian food, they offer a good fusion of flavors and a solid take on Indian cuisine. My first visit was the best, though I don’t remember exactly what I ordered. The second time was a bit anticlimactic but still enjoyable. The portions are generous, and while the Butter Chicken is on par with what you’d expect, the Mango Lassi is particularly delicious—creamy and packed with mango flavor." },
+            { grayscale: "foods/tibetankitchen.png", color: "foods/tibetankitchencolor.png", review: "Tibetan Kitchen: I visited this place once and tried the Thukpa Dhrangmo (spicy cold noodles with sesame oil dressing), Dhara (mango yogurt shake), Tingmo (Tibetan steamed bun), Phaksha Shaptak (twice-cooked pork belly), and Sha Momo (deep/pan-fried dumplings). My top recommendations are the Phaksha Shaptak, Thukpa Dhrangmo, and Tingmo. I had heard great things about the restaurant and found that it lived up to the hype. It was packed when I went on a weekday evening, so I’d suggest going earlier in the evening or much later to avoid the crowd. While I enjoyed the food, I personally found the momos a bit doughy, and the Tibetan bread was plain on its own. However, it paired well with the slightly spicy pork belly dish." },
+            { grayscale: "foods/tigerdaddy.png", color: "foods/tigerdaddycolor.png", review: "Tiger Daddy: I’ve visited Tiger Daddy three times and tried Combo A, which includes both a dry mix-in and broth, as well as a sushi roll. Honestly, I’m not sure what to recommend here—just get whatever you like. Over time, the taste of Tiger Daddy diminished a bit for me, but it’s still decent. Personally, I prefer the dry mix-in version, although I do find it frustrating that it has too many peppercorns, and I’m always biting into one. Other than that, the mala and nutty flavors are enjoyable, especially when paired with the peanut sauce." },
+            { grayscale: "foods/zinc.png", color: "foods/zinccolor.png", review: "ZINC: I visited Zinc once, but unfortunately, I don’t remember exactly what I ordered. My recommendation is a bit lacking since I don’t recall the specifics. That being said, I did get to eat at Zinc for free, which might be why it tasted better to me. It's a solid fine dining spot, but it doesn’t quite compare to Olea. The food there felt more like traditional American fare, whereas Olea is much more innovative and offers unique flavors. That said, Zinc isn’t bad by any means—it’s just not as distinctive as some other places I’ve tried." }
         ];
 
         const foodContainer = document.getElementById('food-container');
         const welcomeText = document.getElementById('welcome-text');
+        const popup = document.getElementById('popup');
+        const popupText = document.getElementById('popup-text');
+        const closeBtn = document.getElementById('close');
 
         function placeFoodItems() {
             foodData.forEach(food => {
@@ -175,6 +212,11 @@
                 wrapper.appendChild(grayscaleImg);
                 wrapper.appendChild(colorImg);
 
+                wrapper.addEventListener('click', () => {
+                    popupText.textContent = food.review;
+                    popup.style.display = 'block';
+                });
+
                 wrapper.addEventListener('mouseenter', () => {
                     document.querySelectorAll('.food-wrapper').forEach(item => {
                         if (item !== wrapper) {
@@ -193,15 +235,22 @@
             });
         }
 
+        function closePopup() {
+            popup.style.display = 'none';
+        }
+
         function showWelcomeText() {
             welcomeText.classList.add('show');
         }
+
+        closeBtn.addEventListener('click', closePopup);
 
         placeFoodItems();
         window.onload = showWelcomeText;
     </script>
 </body>
 </html>
+
 
 
 
