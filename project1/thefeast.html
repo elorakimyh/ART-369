@@ -8,52 +8,71 @@
         body {
             margin: 0;
             padding: 0;
-            height: 100vh;
-            overflow: hidden;
             background-color: #faecdb;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: monospace;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            position: relative;
+            min-height: 100vh;
+            box-sizing: border-box;
         }
 
-        h1 {
-            position: absolute;
-            font-size: 1.5em;
+        .welcome-text {
+            font-size: 1em;
             color: #333;
             text-align: center;
-            z-index: 10;
+            opacity: 0;
+            line-height: 1.5;
+            margin-top: 70px;
+            padding: 0 10px;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .welcome-text.show {
+            opacity: 1;
         }
 
         .food-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-auto-rows: 150px;
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            justify-items: center;
+            margin-top: 70px;
+            padding-bottom: 20px;
         }
 
         .food-wrapper {
-            position: absolute;
+            position: relative;
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
             transition: transform 0.3s ease, opacity 0.3s ease;
+            transform-origin: center center;
+            animation: rotate-sway 3s infinite ease-in-out;
         }
 
-        .food {
-            position: absolute;
+        .food-wrapper:hover {
+            transform: scale(1.3) rotate(0);
+            z-index: 10;
+            animation: none;
+        }
+
+        .food, .food-overlay {
             width: 150px;
-            height: auto;
-            filter: grayscale(100%);
+            height: 150px;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
             transition: transform 0.3s ease, opacity 0.3s ease;
-            z-index: 5;
         }
 
         .food-overlay {
-            position: absolute;
-            width: 150px;
-            height: auto;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
-            z-index: 10;
         }
 
         .food-wrapper:hover .food-overlay {
@@ -64,16 +83,57 @@
             opacity: 0;
         }
 
-        h1.hidden {
-            opacity: 0;
+        .dimmed {
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        @keyframes rotate-sway {
+            0% {
+                transform: rotate(-3deg);
+            }
+            50% {
+                transform: rotate(3deg);
+            }
+            100% {
+                transform: rotate(-3deg);
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .food-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .food-container {
+                grid-template-columns: repeat(3, 1fr);
+                margin-top: 50px;
+            }
+
+            .welcome-text {
+                font-size: 0.9em;
+                margin-top: 50px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .food-container {
+                grid-template-columns: repeat(2, 1fr);
+                margin-top: 40px;
+            }
+
+            .welcome-text {
+                font-size: 0.8em;
+                margin-top: 40px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1 id="welcome-text">Welcome to the Feast!<br>Click on a food to view its review.</h1>
-    <div class="food-container" id="food-container">
-        <!-- Food items will be injected here by JavaScript -->
-    </div>
+    <div class="welcome-text" id="welcome-text">Welcome to the Feast!<br>Click on a restaurant food to view its review.</div>
+    <div class="food-container" id="food-container"></div>
 
     <script>
         const foodData = [
@@ -82,86 +142,66 @@
             { grayscale: "foods/chefjiang.png", color: "foods/chefjiangcolor.png" },
             { grayscale: "foods/pokemoto.png", color: "foods/pokemotocolor.png" },
             { grayscale: "foods/padthai.png", color: "foods/padthaicolor.png" },
-            { grayscale: "images/bbq.png", color: "images/bbqcolor.png" },
-            { grayscale: "images/jinfu.png", color: "images/jinfucolor.png" },
-            { grayscale: "images/mecha.png", color: "images/mechacolor.png" },
-            { grayscale: "images/noa.png", color: "images/noacolor.png" },
-            { grayscale: "images/olea.png", color: "images/oleacolor.png" },
-            { grayscale: "images/phoketkeo.png", color: "images/phoketkeocolor.png" },
-            { grayscale: "images/sherkaan.png", color: "images/sherkaancolor.png" },
-            { grayscale: "images/tibetankitchen.png", color: "images/tibetankitchencolor.png" },
-            { grayscale: "images/tigerdaddy.png", color: "images/tigerdaddycolor.png" },
-            { grayscale: "images/zinc.png", color: "images/zinccolor.png" }
+            { grayscale: "foods/bbqchicken.png", color: "foods/bbqchickencolor.png" },
+            { grayscale: "foods/jinfu.png", color: "foods/jinfucolor.png" },
+            { grayscale: "foods/mecha.png", color: "foods/mechacolor.png" },
+            { grayscale: "foods/noa.png", color: "foods/noacolor.png" },
+            { grayscale: "foods/olea.png", color: "foods/oleacolor.png" },
+            { grayscale: "foods/phoketkeo.png", color: "foods/phoketkeocolor.png" },
+            { grayscale: "foods/sherkaan.png", color: "foods/sherkaancolor.png" },
+            { grayscale: "foods/tibetankitchen.png", color: "foods/tibetankitchencolor.png" },
+            { grayscale: "foods/tigerdaddy.png", color: "foods/tigerdaddycolor.png" },
+            { grayscale: "foods/zinc.png", color: "foods/zinccolor.png" }
         ];
 
         const foodContainer = document.getElementById('food-container');
         const welcomeText = document.getElementById('welcome-text');
 
-        // Generate random positions without overlap
-        const positions = [];
-        const isOverlapping = (x, y) => {
-            return positions.some(pos => {
-                const dx = pos.x - x;
-                const dy = pos.y - y;
-                return Math.sqrt(dx * dx + dy * dy) < 200; // Minimum distance to avoid overlap
+        function placeFoodItems() {
+            foodData.forEach(food => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'food-wrapper';
+
+                const grayscaleImg = document.createElement('img');
+                grayscaleImg.src = food.grayscale;
+                grayscaleImg.alt = `${food.grayscale.split('/').pop()} (Grayscale)`;
+                grayscaleImg.className = 'food';
+
+                const colorImg = document.createElement('img');
+                colorImg.src = food.color;
+                colorImg.alt = `${food.color.split('/').pop()} (Color)`;
+                colorImg.className = 'food-overlay';
+
+                wrapper.appendChild(grayscaleImg);
+                wrapper.appendChild(colorImg);
+
+                wrapper.addEventListener('mouseenter', () => {
+                    document.querySelectorAll('.food-wrapper').forEach(item => {
+                        if (item !== wrapper) {
+                            item.classList.add('dimmed');
+                        }
+                    });
+                });
+
+                wrapper.addEventListener('mouseleave', () => {
+                    document.querySelectorAll('.food-wrapper').forEach(item => {
+                        item.classList.remove('dimmed');
+                    });
+                });
+
+                foodContainer.appendChild(wrapper);
             });
-        };
+        }
 
-        foodData.forEach((food, index) => {
-            let x, y;
-            do {
-                x = Math.random() * 80; // Randomize horizontal position (20% padding on each side)
-                y = Math.random() * 80; // Randomize vertical position (20% padding on each side)
-            } while (isOverlapping(x, y));
+        function showWelcomeText() {
+            welcomeText.classList.add('show');
+        }
 
-            positions.push({ x, y });
-
-            // Create food wrapper
-            const wrapper = document.createElement('div');
-            wrapper.className = 'food-wrapper';
-            wrapper.style.top = `${y}%`;
-            wrapper.style.left = `${x}%`;
-
-            // Create grayscale image
-            const grayscaleImg = document.createElement('img');
-            grayscaleImg.src = food.grayscale;
-            grayscaleImg.alt = `${food.grayscale.split('/').pop()} (Grayscale)`;
-            grayscaleImg.className = 'food';
-
-            // Create color overlay image
-            const colorImg = document.createElement('img');
-            colorImg.src = food.color;
-            colorImg.alt = `${food.color.split('/').pop()} (Color)`;
-            colorImg.className = 'food-overlay';
-
-            // Append images to wrapper
-            wrapper.appendChild(grayscaleImg);
-            wrapper.appendChild(colorImg);
-
-            // Add hover event for welcome text
-            wrapper.addEventListener('mouseenter', () => {
-                welcomeText.classList.add('hidden');
-            });
-
-            wrapper.addEventListener('mouseleave', () => {
-                welcomeText.classList.remove('hidden');
-            });
-
-            // Append wrapper to container
-            foodContainer.appendChild(wrapper);
-        });
+        placeFoodItems();
+        window.onload = showWelcomeText;
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 
 
